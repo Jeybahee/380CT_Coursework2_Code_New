@@ -5,7 +5,7 @@ import java.util.Random;
 public class Dynamic_programming {
 
     public static void main(String[] args) {
-        int bit = 10;
+        int bit = 5;
         for (int n = 1; n < 200; n++) {
             long startTime = System.nanoTime();
             for (int i = 0; i < 100; i++) {

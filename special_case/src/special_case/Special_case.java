@@ -7,7 +7,7 @@ public class Special_case {
     public static void main(String[] args) {
 
         //int array[] = {3, 1, 1, 1, 2, 2, 1, 5};
-        int bit = 20;
+        int bit = 10;
         for (int n = 1; n < 200; n++) {
             long startTime = System.nanoTime();
             for (int i = 0; i < 100; i++) {

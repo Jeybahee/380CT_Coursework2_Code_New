@@ -7,7 +7,7 @@ import java.util.Random;
 public class Greedy_main {
 
     public static void main(String[] args) {
-        int bit = 20;
+        int bit = 10;
         for (int n = 1; n < 200; n++) {
             long startTime = System.nanoTime();
             for (int i = 0; i < 100; i++) {
