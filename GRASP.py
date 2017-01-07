@@ -1,3 +1,7 @@
+from random import randint, sample
+from itertools import chain, combinations
+from time import time
+
 def quicksort(listToSort):
     less = []
     more = []
@@ -15,30 +19,24 @@ def quicksort(listToSort):
     else:
         return listToSort 
         
-def graspSubsetSum(sortedList,tot):
-    print("Sorted List: ",sortedList)
-    current = 0
-    used = []
+def graspSubsetSum(sortedList,t):
+    total = 0
     for i in range(len(sortedList)):
-        if current < tot:
-            current = current + sortedList[i]
-            if current > tot:
-                current = current - sortedList[i]
-            else:
-                used.append(sortedList[i])
-        elif current == tot:
-            return used
-        else:
-            return None
+        if total < t:
+            total = total + sortedList[i]
+            if total > t:
+                total = total - sortedList[i]
+    return t - total
 
-def localSearch(sortedList,greedyList,tot):
-    print("")
-    
+def random_instance(n,bit=12):
+    max_n_bit_number = 2**bit-1
+    S = sorted( [ randint(0,max_n_bit_number) for i in range(n) ], reverse=True)
+    return S
 
-List = [100,200,300,500,800,1000,10,50,90,70,30,5,9,1]
-Total = 1207
-print("Set: ", List)
-print("Total: ", Total) 
-sortedList = quicksort(List) 
-out = graspSubsetSum(sortedList, Total)
-print("Result: ", out)  
+for n in range(10,100,2):
+    total = 0
+    for x in range(1,100):
+       S = random_instance(n)
+       sortedList = quicksort(S)
+       total += graspSubsetSum(sortedList, 10000)
+    print(total/100)
