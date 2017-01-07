@@ -15,7 +15,7 @@ class SSP():
     def __repr__(self):
         return "SSP instance: S="+str(self.S)+"\tt="+str(self.t)
     
-    def random_instance(self, n, bitlength=10):
+    def random_instance(self, n, bitlength=5):
         max_n_bit_number = 2**bitlength-1
         self.S = sorted( [ randint(0,max_n_bit_number) for i in range(n) ] , reverse=True)
         self.t = randint(0,n*max_n_bit_number)
