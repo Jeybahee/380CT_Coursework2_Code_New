@@ -1,5 +1,6 @@
 package greedy_search;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
@@ -8,18 +9,18 @@ public class Greedy_main {
 
     public static void main(String[] args) {
         int bit = 10;
-        for (int n = 1; n < 200; n++) {
-            long startTime = System.nanoTime();
+        double total = 0;
+        DecimalFormat df = new DecimalFormat("0.00000");
+        for (int n = 100; n < 170; n = n + 2) {
+            total = 0;
             for (int i = 0; i < 100; i++) {
-                //System.out.print(beginGreedy(a) + " ");
-                begin(n, bit);
+                total += begin(n, bit);
             }
-            System.out.println((System.nanoTime() - startTime) / 100);
-            //System.out.println("(" + status + ") took " + ((System.nanoTime() - startTime) / 100) + " nano second(s).");
+            System.out.println(df.format(total/100));
         }
     }
 
-    public static boolean begin(int n, int bit) {
+    public static double begin(int n, int bit) {
         int max_n_bit_number = (int) Math.pow(2, bit - 1);
         Integer[] S = new Integer[n];
         Random rand = new Random();
@@ -28,13 +29,13 @@ public class Greedy_main {
             temp = rand.nextInt(max_n_bit_number) + 0;
             S[i] = temp;
         }
-        int t = rand.nextInt(n * max_n_bit_number) + 0;
         Arrays.sort(S, Collections.reverseOrder());
-        return SubsetSum_Greedy(S, n, t) == 0;
+        int t = rand.nextInt(n * max_n_bit_number) + 0;
+        return SubsetSum_Greedy(S, n, t);
     }
 
-    public static int SubsetSum_Greedy(Integer S[], int n, int t) {
-        int total = 0;
+    public static double SubsetSum_Greedy(Integer S[], int n, double t) {
+        double total = 0;
         int i = 0;
 //        List subset = new ArrayList<>();
 
@@ -52,6 +53,6 @@ public class Greedy_main {
 //        for (int a = 0; a < subset.size(); a++) {
 //            System.out.print(subset.get(a).toString() + " ");
 //        }
-        return t - total;
+        return 1 - (t - total) / t;
     }
 }
