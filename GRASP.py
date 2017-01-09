@@ -28,7 +28,7 @@ def graspSubsetSum(sortedList,t):
                 total = total - sortedList[i]
     return t - total
 
-def random_instance(n,bit=10):
+def random_instance(n,bit=20):
     max_n_bit_number = 2**bit-1
     S = sorted( [ randint(0,max_n_bit_number) for i in range(n) ], reverse=True)
     return S
