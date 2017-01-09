@@ -28,15 +28,15 @@ def graspSubsetSum(sortedList,t):
                 total = total - sortedList[i]
     return t - total
 
-def random_instance(n,bit=12):
+def random_instance(n,bit=10):
     max_n_bit_number = 2**bit-1
     S = sorted( [ randint(0,max_n_bit_number) for i in range(n) ], reverse=True)
     return S
 
-for n in range(10,100,2):
+for n in range(10,100,1):
     total = 0
     for x in range(1,100):
        S = random_instance(n)
        sortedList = quicksort(S)
        total += graspSubsetSum(sortedList, 10000)
-    print(total/100)
+    print(total/1000000)
